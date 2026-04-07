@@ -1,0 +1,241 @@
+/* HopTable.module.css */
+
+.tableWrapper {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--panel-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 260px;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.tableTitle {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--neon-cyan);
+}
+
+.hopCount {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.tableScroll {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* ─── Cabeçalho ─────────────────────────────────────────────── */
+.thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-secondary);
+}
+
+.thead th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.thHop { width: 40px; }
+.thIp  { width: 140px; }
+.thLocation { flex: 1; }
+.thLatency { width: 150px; text-align: right; }
+
+/* ─── Linhas ─────────────────────────────────────────────────── */
+.row {
+  border-bottom: 1px solid rgba(59, 130, 246, 0.06);
+  animation: hopAppear 0.3s ease forwards;
+  opacity: 0;
+  transition: background var(--transition-fast);
+}
+
+.row:hover {
+  background: var(--bg-hover);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* Linha com alta latência tem borda esquerda colorida */
+.rowHighLatency {
+  border-left: 2px solid var(--latency-high);
+}
+
+/* ─── Células ─────────────────────────────────────────────────── */
+.cellHopNum,
+.cellIp,
+.cellLocation,
+.cellLatency {
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+
+.cellLatency { text-align: right; }
+
+.hopNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--neon-blue);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.ipCode {
+  color: var(--text-accent);
+  font-size: 12px;
+}
+
+.timeout {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.privateIp {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--neon-purple);
+  opacity: 0.7;
+}
+
+.privateLabel {
+  color: var(--neon-purple);
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flag {
+  width: 16px;
+  height: 12px;
+  border-radius: 1px;
+  object-fit: cover;
+}
+
+.city {
+  color: var(--text-primary);
+}
+
+.country {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+/* ─── Latência ────────────────────────────────────────────────── */
+.latencyWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  position: relative;
+}
+
+.latencyBar {
+  position: absolute;
+  right: 100%;
+  margin-right: 8px;
+  height: 3px;
+  border-radius: 2px;
+  max-width: 60px;
+  opacity: 0.5;
+  transition: width 0.4s ease;
+}
+
+.alertIcon {
+  color: var(--latency-high);
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Estados ─────────────────────────────────────────────────── */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  gap: 12px;
+}
+
+.loadingSpinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-subtle);
+  border-top-color: var(--neon-cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loadingText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  animation: pulse-glow 1.5s ease infinite;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.emptyIcon {
+  font-size: 28px;
+  opacity: 0.3;
+  line-height: 1;
+}
+
+@keyframes hopAppear {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

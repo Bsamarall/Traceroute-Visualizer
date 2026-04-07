@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: traceroute-backend
+    env: node
+    buildCommand: |
+      apt-get update
+      apt-get install -y traceroute
+      npm install
+    startCommand: node src/index.js

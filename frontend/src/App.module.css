@@ -1,0 +1,211 @@
+/* App.module.css - Layout principal */
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Layout principal (abaixo da StatsBar) ────────────────── */
+.main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─── Área central ─────────────────────────────────────────── */
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* ─── Globo ─────────────────────────────────────────────────── */
+.globeContainer {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  /* Gradiente para integrar com o fundo */
+  background: radial-gradient(ellipse at center, #0a0f1e 0%, #030712 70%);
+}
+
+/* Overlay de loading */
+.globeOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(3, 7, 18, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+.loadingRing {
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(0, 245, 255, 0.15);
+  border-top-color: var(--neon-cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: var(--glow-cyan);
+}
+
+.loadingText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--neon-cyan);
+}
+
+.loadingDot {
+  animation: pulse-glow 0.8s ease infinite;
+}
+
+/* Overlay de boas-vindas */
+.welcomeOverlay {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+  pointer-events: all;
+}
+
+.welcomeBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--neon-cyan);
+  background: rgba(3, 7, 18, 0.85);
+  color: var(--neon-cyan);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-base);
+  box-shadow: var(--glow-cyan);
+}
+
+.welcomeBtn:hover {
+  background: rgba(0, 245, 255, 0.1);
+  box-shadow: var(--glow-cyan), 0 0 40px rgba(0, 245, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.welcomeBtnIcon {
+  font-size: 18px;
+  animation: pulse-glow 2s ease infinite;
+}
+
+.welcomeHint {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+/* Label do alvo atual */
+.targetLabel {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(3, 7, 18, 0.8);
+  border: 1px solid var(--border-active);
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  animation: fadeInUp 0.3s ease;
+}
+
+.targetLabelIcon {
+  color: var(--neon-cyan);
+  font-size: 10px;
+  animation: pulse-glow 2s ease infinite;
+}
+
+.targetLabel span:last-child {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+/* ─── Tabela de hops ─────────────────────────────────────────── */
+.tableContainer {
+  height: 250px;
+  flex-shrink: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ─── Toast de erro ─────────────────────────────────────────── */
+.errorToast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: rgba(20, 10, 10, 0.95);
+  border: 1px solid var(--neon-red);
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.2);
+  z-index: 2000;
+  animation: fadeInUp 0.3s ease;
+  max-width: 500px;
+}
+
+.errorIcon {
+  color: var(--neon-red);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.errorToast span:nth-child(2) {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.errorClose {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  margin-left: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.errorClose:hover {
+  color: var(--neon-red);
+}
