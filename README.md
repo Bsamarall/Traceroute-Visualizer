@@ -252,23 +252,6 @@ Esta aplicação foi desenvolvida com segurança como prioridade:
 
 ---
 
-## 💡 Possíveis Melhorias
-
-- [ ] **WebSocket** para streaming em tempo real dos hops (sem esperar o traceroute completo)
-- [ ] **mtr** como alternativa ao traceroute (mais informações por hop)
-- [ ] **IPv6** suporte completo no globo e geolocalização
-- [ ] **Exportar** rotas como PNG, PDF ou JSON
-- [ ] **Comparar** duas rotas lado a lado no globo
-- [ ] **ASN lookup** para identificar provedores de internet em cada hop
-- [ ] **Dark/Light theme** com toggle
-- [ ] **Docker** para facilitar deploy e isolamento do traceroute
-- [ ] **Autenticação** básica para instalações compartilhadas
-- [ ] **Teste de velocidade** integrado ao diagnóstico de rota
-- [ ] **Mapa 2D** como alternativa ao globo para dispositivos menos potentes
-- [ ] **PWA** para funcionar offline com histórico local
-
----
-
 ## 👥 Créditos
 
 > "Esse projeto foi bem difícil, precisei da ajuda de uma IA haha, porém isso não diminui meu esforço. Espero que esteja gostando da ferramenta e sinta-se à vontade para enviar um feedback."
